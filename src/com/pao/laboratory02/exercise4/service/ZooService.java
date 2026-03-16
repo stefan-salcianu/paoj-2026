@@ -4,6 +4,7 @@ import com.pao.laboratory02.exercise4.model.Animal;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeMap;
 
 /**
  * ┌─────────────────────────────────────────────────────────────────────────┐
@@ -65,7 +66,8 @@ public class ZooService {
      *   2. System.out.println("Adăugat: " + a);
      */
     public void addAnimal(Animal a) {
-        // TODO: implementează aici
+        animals.add(a);
+        System.out.println("Adăugat: " + a);
     }
 
     /**
@@ -78,7 +80,12 @@ public class ZooService {
      *   System.out.println("  " + (i+1) + ". " + animals.get(i).describe());
      */
     public void listAll() {
-        // TODO: implementează aici
+        if (animals.isEmpty()){
+        System.out.println("Grădina zoologică este goală.");
+        return;}
+        for(int i=0; i<animals.size(); i++)
+            System.out.println("  " + (i+1) + ". " + animals.get(i).describe());
+
     }
 
     /**
@@ -95,7 +102,16 @@ public class ZooService {
      *       La final, verifică if (!found).
      */
     public void listByType(String type) {
-        // TODO: implementează aici
+        Boolean found=false;
+        for ( Animal a : animals){
+            if (a.getClass().getSimpleName().equals(type)){
+                System.out.println(a.describe());
+                found= true;
+            }
+        }
+        if (! found){
+            System.out.println("NU exista acest tip");
+        }
     }
 
     /**
@@ -111,7 +127,16 @@ public class ZooService {
      *   3. System.out.println("Cel mai bătrân animal: " + oldest.describe());
      */
     public void findOldest() {
-        // TODO: implementează aici
+        int mx=-1;
+        Animal m = null ;
+        for (int i=0;i<animals.size();i++){
+            if (animals.get(i).getAge() > mx) {
+                mx= animals.get(i).getAge();
+                m= animals.get(i);
+            }
+
+        }
+        System.out.println(m.describe());
     }
 }
 

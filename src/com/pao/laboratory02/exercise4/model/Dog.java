@@ -28,7 +28,15 @@ public class Dog extends Animal {
 
     @Override
     public String sound() {
-        return ""; // TODO: returnează "Ham!"
+        return "HAM!";
+    }
+    @Override
+    public String describe() {
+        return name + " (varsta: " + age + " ani) face: Ham!";
+    }
+    @Override
+    public String toString(){
+        return "Dog{name=" + name+","+ "age = " + age;
     }
 }
 

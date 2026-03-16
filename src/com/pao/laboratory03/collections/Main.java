@@ -1,5 +1,7 @@
 package com.pao.laboratory03.collections;
 
+import java.util.*;
+
 /**
  * Exercițiul 1 — Colecții: HashMap și TreeMap
  *
@@ -49,8 +51,40 @@ package com.pao.laboratory03.collections;
  * Studenți la BD (actualizat): [Ana, Elena, George]
  */
 public class Main {
+
     public static void main(String[] args) {
         // TODO: implementează cele 3 părți de mai sus
+        String[] words = {"java", "python", "java", "c++", "python", "java", "rust", "c++", "go"};
+        Map<String, Integer> d = new HashMap<>();
+        for (String word: words){
+            d.put(word,d.getOrDefault(word,0)+1);
+        }
+        d.forEach((key, val) -> {
+            System.out.println(key + " " + val);
+        });
+        System.out.println(d.containsKey("rust"));
+        System.out.println(d.keySet());
+        System.out.println(d.values());
+        for (Map.Entry<String, Integer> entry : d.entrySet()) {
+            System.out.println(entry.getKey() + " -> " + entry.getValue());
+        }
+        TreeMap<String, Integer> dictionarOrdonat = new TreeMap<>(d);
+        System.out.println("TreeMap-ul ordonat alfabetic: " + dictionarOrdonat);
+        System.out.println("Prima cheie (alfabetic): " + dictionarOrdonat.firstKey());
+        System.out.println("Ultima cheie (alfabetic): " + dictionarOrdonat.lastKey());
+
+        HashMap<String, List<String>> asocieri = new HashMap<>();
+
+        asocieri.put("BD", new ArrayList<>(List.of("Ana", "Mihai", "Ion")));
+        asocieri.put("AI", new ArrayList<>(List.of("Ana", "Elena")));
+
+        System.out.println("Lista AI: " + asocieri.getOrDefault("AI", List.of("0")));
+
+
+        asocieri.get("BD").add("Vasile");
+
+        System.out.println("Lista actualizată BD: " + asocieri.get("BD"));
+
     }
 }
 

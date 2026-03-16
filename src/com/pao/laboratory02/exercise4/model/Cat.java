@@ -27,8 +27,12 @@ public class Cat extends Animal {
     }
 
     @Override
-    public String sound() {
-        return ""; // TODO: returnează "Miau!"
+    public String sound(){
+        return "Miau!";
+    }
+    @Override
+    public String describe() {
+        return super.describe();
     }
 }
 

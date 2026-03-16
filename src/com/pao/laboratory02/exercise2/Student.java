@@ -1,5 +1,9 @@
 package com.pao.laboratory02.exercise2;
 
+import com.pao.laboratory02.equalshashcode.Book;
+
+import java.util.Objects;
+
 /**
  * TODO: Adaugă equals(Object o) și hashCode() — doi studenți sunt egali dacă au același id.
  * Model: vezi equalshashcode/Book.java
@@ -20,13 +24,15 @@ public class Student {
     public String toString() {
         return "Student{id=" + id + ", name='" + name + "'}";
     }
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student s = (Student) o;
+        return this.id == s.id;
+    }
 
-    // TODO: equals(Object o) — compară după id
-    //   if (this == o) return true;
-    //   if (o == null || getClass() != o.getClass()) return false;
-    //   Student s = (Student) o;
-    //   return this.id == s.id;
-
-    // TODO: hashCode() — return Objects.hash(id);
-    //   (import java.util.Objects)
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }

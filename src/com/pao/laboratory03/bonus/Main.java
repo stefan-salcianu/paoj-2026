@@ -153,11 +153,67 @@ package com.pao.laboratory03.bonus;
  * === Excepții ===
  * TaskNotFoundException: Task-ul 'T999' nu a fost găsit
  */
+
 public class Main {
     public static void main(String[] args) {
-        // TODO: implementează toți cei 10 pași de mai sus
-        // Creează TOATE clasele necesare în acest pachet (bonus/)
-        // Nu ai subpachete impuse — organizează cum consideri
+        TaskService service = TaskService.getInstance();
+
+        System.out.println("=== Adăugare task-uri ===");
+        System.out.println("Adăugat: " + service.addTask("Fix login bug", Priority.CRITICAL));
+        System.out.println("Adăugat: " + service.addTask("Add dark mode", Priority.LOW));
+        System.out.println("Adăugat: " + service.addTask("Update docs", Priority.MEDIUM));
+        System.out.println("Adăugat: " + service.addTask("Fix memory leak", Priority.HIGH));
+        System.out.println("Adăugat: " + service.addTask("Refactor DB layer", Priority.HIGH));
+
+        System.out.println("\n=== Asignare ===");
+        service.assignTask("T001", "Ana");
+        service.assignTask("T003", "Mihai");
+        service.assignTask("T004", "Elena");
+        System.out.println("T001 → Ana\nT003 → Mihai\nT004 → Elena");
+
+        System.out.println("\n=== Schimbări status ===");
+        service.changeStatus("T001", Status.IN_PROGRESS);
+        System.out.println("T001: TODO → IN_PROGRESS ✓");
+
+        service.changeStatus("T001", Status.DONE);
+        System.out.println("T001: IN_PROGRESS → DONE ✓");
+
+        service.changeStatus("T003", Status.IN_PROGRESS);
+        System.out.println("T003: TODO → IN_PROGRESS ✓");
+
+        try {
+            service.changeStatus("T001", Status.TODO);
+        } catch (InvalidTransitionException e) {
+            System.out.println("T001: DONE → TODO → InvalidTransitionException: " + e.getMessage());
+        }
+
+        System.out.println("\n=== Task-uri HIGH ===");
+        for (Task t : service.getTasksByPriority(Priority.HIGH)) {
+            System.out.println(t);
+        }
+
+        System.out.println("\n=== Sumar status ===");
+        for (var entry : service.getStatusSummary().entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
+
+        System.out.println("\n=== Task-uri neasignate ===");
+        for (Task t : service.getUnassignedTasks()) {
+            System.out.println(t.getId() + ": " + t.getTitle());
+        }
+
+        System.out.println("\n=== Scor urgență (baseDays=5) ===");
+        System.out.println("Total: " + service.getTotalUrgencyScore(5));
+
+        System.out.println("\n=== Audit Log ===");
+        service.printAuditLog();
+
+        System.out.println("\n=== Excepții ===");
+        try {
+            service.assignTask("T999", "Dorel");
+        } catch (TaskNotFoundException e) {
+            System.out.println("TaskNotFoundException: " + e.getMessage());
+        }
     }
 }
 

@@ -5,8 +5,8 @@ package com.pao.laboratory02.exercise4.model;
  * DATĂ — nu modifica.
  */
 public abstract class Animal implements Describable {
-    private String name;
-    private int age;
+    protected String name;
+    protected int age;
 
     public Animal(String name, int age) {
         this.name = name;
