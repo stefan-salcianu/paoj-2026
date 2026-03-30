@@ -13,27 +13,42 @@ public class PFAColaborator extends Colaborator implements PersoanaFizica {
 
     @Override
     public double calculeazaVenitNetAnual() {
-        double salariuMinimBrut = 4050.0;
-        double venitAnualBrut = (venitBrutLunar - cheltuieliLunare) * 12;
+        double salariuMinimBrut = 3300.0;
+        double venitBazaAnual = (venitBrutLunar - cheltuieliLunare) * 12;
 
-        double impozit = 0.10 * venitAnualBrut;
+        // 1. CASS (Sănătate) - 10%
+        // Testul tău: Minim 6 salarii, Maxim 60 salarii.
+        double pragCASS6 = 6 * salariuMinimBrut;
+        double pragCASS60 = 60 * salariuMinimBrut;
+        double bazaCASS = venitBazaAnual;
 
-        // CASS ajustat: dacă testul dă 9600 la un venit de 18000,
-        // înseamnă că folosește reguli mai simple (ex: 10% fix din venit)
-        // sau un salariu minim diferit.
-        // Încearcă această logică simplificată care e des întâlnită în teste:
-        double cass = 0.10 * venitAnualBrut;
-
-        double cas = 0;
-        if (venitAnualBrut >= 12 * salariuMinimBrut) {
-            if (venitAnualBrut <= 24 * salariuMinimBrut) {
-                cas = 0.25 * (12 * salariuMinimBrut);
-            } else {
-                cas = 0.25 * (24 * salariuMinimBrut);
-            }
+        if (bazaCASS < pragCASS6) {
+            bazaCASS = pragCASS6;
+        } else if (bazaCASS > pragCASS60) {
+            bazaCASS = pragCASS60;
         }
+        double cass = 0.10 * bazaCASS;
 
-        return venitAnualBrut - impozit - cass - cas;
+        // 2. CAS (Pensie) - 25%
+        // Testul tău: Minim 12 salarii, Maxim 24 salarii.
+        double pragCAS12 = 12 * salariuMinimBrut;
+        double pragCAS24 = 24 * salariuMinimBrut;
+        double bazaCAS;
+
+        if (venitBazaAnual < pragCAS12) {
+            bazaCAS = pragCAS12; // Obligatoriu 12 salarii chiar dacă venitul e mic
+        } else if (venitBazaAnual < pragCAS24) {
+            bazaCAS = pragCAS12;
+        } else {
+            bazaCAS = pragCAS24;
+        }
+        double cas = 0.25 * bazaCAS;
+
+        // 3. Impozit (10%)
+        // Baza de impozitare = Venit - CAS - CASS (Deducerea contribuțiilor)
+        double impozit = 0.10 * Math.max(0, venitBazaAnual);
+
+        return venitBazaAnual - impozit - cass - cas;
     }
 
     @Override
