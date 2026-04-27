@@ -107,8 +107,5 @@ public class Main {
         System.out.println("  Locuri disponibile dupa anulare: " + locuriDupaAnulare);
         System.out.println();
 
-        System.out.println("=========================================");
-        System.out.println("  DEMO COMPLET CU SUCCES");
-        System.out.println("=========================================");
     }
 }
