@@ -39,6 +39,9 @@ bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
 
+
+CLAUDE.md
+
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
@@ -52,3 +55,4 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
