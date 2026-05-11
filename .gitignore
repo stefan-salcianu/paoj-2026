@@ -3,8 +3,13 @@ previous-*
 private/
 temporarily_curs
 
-# output folder for other exercises output
+# output directories of .class
+out/
 output/
+
+# binary files required in the tests directory
+*.bin
+*.ser
 
 # for tests:
 *.diff

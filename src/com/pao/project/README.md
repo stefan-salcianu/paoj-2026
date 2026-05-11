@@ -63,7 +63,7 @@ git push origin proiect-etapa2
 
 ## Etapa I — Modelare și implementare OOP
 
-> **Deadline: duminică, 26 aprilie, 23:59**
+> **Deadline: joi, 24 aprilie, 23:59**
 
 ### 1. Definirea sistemului
 
