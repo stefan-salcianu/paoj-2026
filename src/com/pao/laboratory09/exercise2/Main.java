@@ -2,6 +2,8 @@ package com.pao.laboratory09.exercise2;
 
 //import com.pao.laboratory09.exercise1.TipTranzactie;
 
+import com.pao.laboratory09.exercise1.TipTranzactie;
+
 import java.io.*;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
