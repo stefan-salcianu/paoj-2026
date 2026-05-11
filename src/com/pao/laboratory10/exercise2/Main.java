@@ -3,6 +3,9 @@ package com.pao.laboratory10.exercise2;
 //import com.pao.laboratory10.exercise1.Tranzactie;
 //import com.pao.laboratory10.exercise1.TipTranzactie;
 
+import com.pao.laboratory10.exercise1.TipTranzactie;
+import com.pao.laboratory10.exercise1.Tranzactie;
+
 import java.util.*;
 
 public class Main {
