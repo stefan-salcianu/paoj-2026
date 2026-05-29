@@ -24,6 +24,17 @@ public final class Bilet {
         this.dataRezervare = LocalDateTime.now();
     }
 
+    // Constructor folosit de BiletRepository pentru reconstructia din baza de date
+    public Bilet(String idBilet, Pasager pasager, Zbor zbor, String clasa, double pret,
+                 LocalDateTime dataRezervare) {
+        this.idBilet = idBilet;
+        this.pasager = pasager;
+        this.zbor = zbor;
+        this.clasa = clasa;
+        this.pret = pret;
+        this.dataRezervare = dataRezervare;
+    }
+
     public String getIdBilet() { return idBilet; }
     public Pasager getPasager() { return pasager; }
     public Zbor getZbor() { return zbor; }

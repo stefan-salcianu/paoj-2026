@@ -47,3 +47,15 @@ CLAUDE.md
 ### Mac OS ###
 .DS_Store
 
+# Database credentials - NEVER commit real passwords
+resources/db.properties
+
+# Runtime-generated files
+output/
+audit.csv
+*.ser
+*.bin
+
+# JAR dependencies - use a build tool or document manually
+lib/*.jar
+

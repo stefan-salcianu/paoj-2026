@@ -23,6 +23,8 @@ public class ZborService {
     /** Pasageri pentru fiecare zbor, indexati dupa idZbor. */
     private final Map<String, List<Pasager>> pasageriPerZbor;
 
+    private final AuditService auditService = AuditService.getInstance();
+
     private ZborService() {
         zboruri = new TreeSet<>();
         zborById = new HashMap<>();
@@ -80,6 +82,7 @@ public class ZborService {
                 rezultate.add(z);
             }
         }
+        auditService.logAction("cautareZboruriDestinatie");
         return rezultate;
     }
 
@@ -111,6 +114,7 @@ public class ZborService {
         if (!pasageriPerZbor.containsKey(idZbor)) {
             throw new EntitateNegasitaException("Zbor", idZbor);
         }
+        auditService.logAction("vizualizarePasageriZbor");
         return Collections.unmodifiableList(pasageriPerZbor.get(idZbor));
     }
 }

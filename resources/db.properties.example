@@ -1,0 +1,31 @@
+# =============================================================
+#  AIRLINE MANAGEMENT SYSTEM - Configuratie baza de date
+#  Folosit de: util/DatabaseConnection.java
+#
+#  Decommenteaza blocul corespunzator bazei de date alese
+#  si completeaza user/password.
+# =============================================================
+
+# -------------------------------------------------------------
+#  PostgreSQL  (recomandat pentru productie)
+# -------------------------------------------------------------
+db.driver=org.postgresql.Driver
+db.url=jdbc:postgresql://localhost:5432/airline_db
+db.user=YOUR_DB_USER
+db.password=YOUR_DB_PASSWORD
+
+# -------------------------------------------------------------
+#  MySQL / MariaDB
+# -------------------------------------------------------------
+# db.driver=com.mysql.cj.jdbc.Driver
+# db.url=jdbc:mysql://localhost:3306/airline_db?useSSL=false&serverTimezone=UTC
+# db.user=root
+# db.password=YOUR_DB_PASSWORD
+
+# -------------------------------------------------------------
+#  H2 (embedded, ideal pentru teste - nu necesita server)
+# -------------------------------------------------------------
+# db.driver=org.h2.Driver
+# db.url=jdbc:h2:./airline_db;DB_CLOSE_DELAY=-1
+# db.user=sa
+# db.password=
